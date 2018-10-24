@@ -38,8 +38,10 @@ def check_repeating_chars(word,pattern):
   #pattern = true and repeats = True, then look for only words which match the repetition pattern
   match_score = 0
   for i in range(len(word)):
-     for j in range(len(word)): 
-       if i != j :
+     for j in range(len(word)):
+        if word[j] == pattern[j]:
+             match_score = match_score + 1
+        if i != j:
          if word[i] == word[j]:
            if pattern[i] != pattern[j]:
              match_score = match_score + 1
@@ -47,13 +49,15 @@ def check_repeating_chars(word,pattern):
            if pattern[i] == pattern[j]:
              match_score = match_score + 1
   if match_score == 0:
-    return True 
+    return True
   else:
     return False
-
+total_matches = 0
 with open(options.FILE) as f:
   for line in f:
     WORD = line.rstrip('\n').strip()
     if check_word_length(WORD,options.pattern) == True :
       if check_repeating_chars(WORD,options.pattern):
         print(WORD)
+        total_matches = total_matches + 1
+print("There are",total_matches,"words that match the pattern.")
