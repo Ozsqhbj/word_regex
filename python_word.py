@@ -39,9 +39,10 @@ def check_repeating_chars(word,pattern):
      for j in range(len(word)): 
        if i != j :
          if word[i] == word[j]:
+           if pattern[i] != pattern[j]:
+             match_score = match_score + 1
+         else:
            if pattern[i] == pattern[j]:
-             match_score = match_score
-           else:
              match_score = match_score + 1
   if match_score == 0:
     return True 
