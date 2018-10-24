@@ -30,6 +30,8 @@ def parse_cli():
 def check_word_length(word,pattern):
   if len(word) == int(len(pattern)):
     return True
+  else:
+    return False
 
 def check_repeating_chars(word,pattern):
   #repeats = False (default) then skip any words with repeating chars
